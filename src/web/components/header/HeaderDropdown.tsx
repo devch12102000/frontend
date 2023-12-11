@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Button, Dropdown } from 'react-bootstrap'
-import avatar8 from './../../../assets/images/avatars/8.jpg'
+import avatar8 from '../../../assets/avatars/8.jpg'
 
 const HeaderDropdown = () => {
   

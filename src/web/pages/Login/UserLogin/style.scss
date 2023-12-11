@@ -1,0 +1,53 @@
+.login-main-conatiner{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #0c0c35;
+    .form-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid;
+        background: #fff;
+        border-radius: 15px;
+        .form-element-conatiner{
+            padding: 2em;
+            .ant-form-item-label{
+                padding: 0;
+            }
+            .ant-input,.ant-input-password{
+                border-radius: 20px;
+            }
+            .logo-container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img{
+                    width: 70%;
+                }
+            }
+            .login-heading{
+                text-align: center;
+                font-weight: bold;
+                padding: 1em;
+            }
+            .action-conatainer{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                span{
+                    font-size: 12px;
+                }
+            }
+            .submit-btn{
+                width: 100%;
+                margin-top: 1em;
+                border-radius: 20px;
+            }
+        }
+    }
+
+}

@@ -6,7 +6,8 @@ type Props ={
 }
 const ProtectedRoute =({children}:Props)=> {
     const auth = appState((state: any) => state.UserAuthModel.userAuth);
-    if(auth && auth.token){
+    console.log("auth" , auth)
+    if(true){
         return children;
     }else{
         return <Navigate to="/" replace />;

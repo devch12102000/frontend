@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 // const DefaultLayout = React.lazy(() => import('../../layout/DefaultLayout'))
-import DefaultLayout from '../../layout/DefaultLayout';
+// import DefaultLayout from '../../layout/DefaultLayout';
 const Login = React.lazy(() => import('../pages/Login/UserLogin/Index'))
 
 const RouterFlow = (props:any) => {
@@ -10,7 +10,7 @@ const RouterFlow = (props:any) => {
         <Routes>
             <Route  path="/login"  element={<Login />} />
             <Route  path="/"  element={<Login />} />
-            <Route path="*" element={<DefaultLayout/>} />
+            {/* <Route path="*" element={<DefaultLayout/>} /> */}
         </Routes>
     );
 }

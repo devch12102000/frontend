@@ -14,7 +14,7 @@ const Index = () => {
         console.log('Success:', values);
         login(values).then((res:any)=>{
             if(res != "error"){
-                navigate('/welcome');
+                navigate('/contacts');
             }
 
         }).catch((error:any)=>{

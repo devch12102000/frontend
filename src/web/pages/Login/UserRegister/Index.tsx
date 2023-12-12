@@ -1,20 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { appActions } from "../../../../store";
 import Grid from '@mui/material/Grid';
-import { Button, Checkbox, Form, Input} from 'antd';
-import "./style.scss";
+import { Button, Form, Input} from 'antd';
+import "../UserLogin/style.scss"
 
+const Register = () => {
 
-
-const Index = () => {
     const navigate = useNavigate();
-    const login = appActions((actions: any) => actions.UserAuthModel.login);
+    const register = appActions((actions: any) => actions.UserAuthModel.register);
 
     const onFinish = (values: any) => {
-        console.log('Success:', values);
-        login(values).then((res:any)=>{
+        register(values).then((res:any)=>{
             if(res != "error"){
-                navigate('/welcome');
+                navigate('/login');
             }
 
         }).catch((error:any)=>{
@@ -26,11 +24,13 @@ const Index = () => {
         console.log('Failed:', errorInfo);
     };
 
+
+
     return (
         <div className='login-main-conatiner'>
             <Grid container className='form-container' xs={12} sm={12} md={3} lg={3} xl={3}>
                 <Form
-                    name="basic"
+                    name="register"
                     labelCol={{ span: 24 }}
                     wrapperCol={{ span: 24 }}
                     initialValues={{ remember: true }}
@@ -43,7 +43,16 @@ const Index = () => {
                             <img className='img-size' src={logo} alt="Logo" />
                         </Grid> */}
                         <Grid className='login-heading'>
-                            <span>LOGIN</span>
+                            <span>Register</span>
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                            <Form.Item
+                                label="Username"
+                                name="username"
+                                rules={[{ required: true, message: 'Please input valid Username!' }]}
+                            >
+                                <Input placeholder='Username' />
+                            </Form.Item>
                         </Grid>
                         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                             <Form.Item
@@ -64,18 +73,9 @@ const Index = () => {
                                     <Input.Password placeholder='Password' />
                                 </Form.Item>
                             </Grid>
-                            <Grid className='action-conatainer'>
-                                <Checkbox><span>Remember me</span></Checkbox>
-                                {/* <Link><span>Forgot Password?</span></Link> */}
-                            </Grid>
                             <Grid xs={12} sm={12} md={12} lg={12} xl={12}>
                                 <Button className='submit-btn' type="primary" htmlType="submit"  >
-                                    Login
-                                </Button>
-                            </Grid>
-                            <Grid xs={12} sm={12} md={12} lg={12} xl={12}>
-                                <Button className='submit-btn' type="link" onClick={() => navigate('/register')}  >
-                                    Register
+                                    Submit
                                 </Button>
                             </Grid>
                         </Grid>
@@ -83,7 +83,8 @@ const Index = () => {
                 </Form>
             </Grid>
         </div>
-    );
+    )
+
 }
 
-export default Index;
+export default Register;

@@ -1,6 +1,6 @@
 const config = {
     // BASE_API_URLS: "http://localhost:5123/",
-    BASE_API_URLS: "https://api.qa-admin.hexaview.in/",
+    BASE_API_URLS: "http://localhost:5001/",
     TIMEOUT: 300000, // 5 minutes = 60x5x1000 = 300000
 
   };

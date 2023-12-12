@@ -3,7 +3,6 @@ import { appActions } from "../../../../store";
 import Grid from '@mui/material/Grid';
 import { Button, Checkbox, Form, Input} from 'antd';
 import "./style.scss";
-import logo from '../../../../assets/brand/logo.png'
 
 
 
@@ -14,7 +13,7 @@ const Index = () => {
     const onFinish = (values: any) => {
         console.log('Success:', values);
         login(values).then(()=>{
-            navigate('/admin-app');
+            navigate('/welcome');
 
         }).catch((error:any)=>{
             console.log(error);
@@ -38,9 +37,9 @@ const Index = () => {
                     autoComplete="off"
                 >
                     <div className='form-element-conatiner'>
-                        <Grid item xs={12} sm={12} md={12} lg={12} xl={12} className='logo-container'>
+                        {/* <Grid item xs={12} sm={12} md={12} lg={12} xl={12} className='logo-container'>
                             <img className='img-size' src={logo} alt="Logo" />
-                        </Grid>
+                        </Grid> */}
                         <Grid className='login-heading'>
                             <span>LOGIN</span>
                         </Grid>

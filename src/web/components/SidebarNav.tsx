@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { AiOutlineHome ,AiFillCaretDown ,AiOutlineFolder,AiOutlinePieChart,  } from 'react-icons/ai'
-import {GoSettings} from 'react-icons/go'
+// import {GoSettings} from 'react-icons/go'
 import {FiSettings} from 'react-icons/fi'
 import {IoIosArrowDown , IoIosArrowUp } from 'react-icons/io'
 
@@ -94,20 +94,17 @@ export const SidebarNav = () => {
 
       <li className="nav-group">
           <div className="nav-link nav-group-toggle" onClick={(e) => handleDashboardDropdown(e, "post")}>
-          <GoSettings className="nav-icon" />
               Post Management
               {/* <IoIosArrowDown className="nav-icon"/> */}
           </div>
           <ul className="nav-group-items post">
             <li className="nav-item">
                 <NavLink className="nav-link" to="/post-list">
-                <GoSettings className="nav-icon" />
                     Manage Post
                 </NavLink>
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" to="/post-types">
-                <GoSettings className="nav-icon" />
                     Manage Post Type
                 </NavLink>
             </li>
@@ -150,14 +147,12 @@ export const SidebarNav = () => {
 
       <li className="nav-group">
           <div className="nav-link nav-group-toggle" onClick={(e) => handleDashboardDropdown(e, "officialPartner")}>
-          <GoSettings className="nav-icon" />
           Official Partner Management
           {/* <IoIosArrowDown className="nav-icon"/> */}
           </div>
           <ul className="nav-group-items officialPartner">
             <li className="nav-item">
                 <NavLink className="nav-link" to="/official-partner-list">
-                <GoSettings className="nav-icon" />
                     Manage Official Partner
                 </NavLink>
             </li>

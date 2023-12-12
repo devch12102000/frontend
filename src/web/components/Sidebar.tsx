@@ -4,7 +4,7 @@ import { SidebarNav } from './SidebarNav'
 import logo from '../../assets/brand/logoWhite.svg'
 
 import SimpleBar from 'simplebar-react'
-// import 'simplebar/dist/simplebar.min.css'
+import 'simplebar-react/dist/simplebar.min.css'
 
 
 const Sidebar = () => {

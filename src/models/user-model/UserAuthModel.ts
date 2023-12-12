@@ -1,9 +1,6 @@
 import { Action, action, thunk, Thunk } from 'easy-peasy';
-import axios from "axios";
-import Notification from "../../web/utils/Notification";
 import http from '../../web/utils/http';
 import ErrorHandler from '../../web/utils/ErrorHandler';
-import { get } from 'lodash';
 export interface IUserAuthModel {
     /*****..........@...ANY TYPE...@.......*****/
     userAuth: Object;
@@ -24,7 +21,7 @@ const UserAuthModel : IUserAuthModel = {
         state.userAuth = payload;
     }),
 
-    logOut: action((state, payload)=>{
+    logOut: action((state)=>{
         state.userAuth = {};
     }),
 
@@ -33,13 +30,13 @@ const UserAuthModel : IUserAuthModel = {
 
     login:thunk(async (actions, data) => {
         
-        const response = await http().post('user/login',data).then(res=>{
+        const response = await http().post('/api/users/login',data).then(res=>{
             const { data } = res;
             actions.setUserAuth(data);
-            return new Promise((resolve, reject) =>resolve("success"));
+            return new Promise((resolve) =>resolve("success"));
         }).catch(error=>{
             ErrorHandler(error);
-            return new Promise((resolve, reject) =>reject("error"));
+            return new Promise((reject) =>reject("error"));
         });
 
         return response;

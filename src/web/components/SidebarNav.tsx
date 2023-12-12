@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import { NavLink } from 'react-router-dom'
-import { AiOutlineHome ,AiFillCaretDown ,AiOutlineFolder,AiOutlinePieChart,  } from 'react-icons/ai'
+import { AiOutlineHome ,AiOutlineFolder,AiOutlinePieChart,  } from 'react-icons/ai'
 // import {GoSettings} from 'react-icons/go'
 import {FiSettings} from 'react-icons/fi'
-import {IoIosArrowDown , IoIosArrowUp } from 'react-icons/io'
 
 
 var OpenMenu=true

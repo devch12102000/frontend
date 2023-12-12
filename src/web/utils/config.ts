@@ -5,11 +5,11 @@ const config = {
 
   };
 
-  if(window.location.host === "qa-admin.hexaview.in"){
-    config.BASE_API_URLS ="https://api.qa-admin.hexaview.in/"
-  }else if(window.location.host === "stage-admin.hexaview.in"){
-    config.BASE_API_URLS ="https://api.stage-admin.hexaview.in/"
-  }else if(window.location.host === "admin.hexaviewtech.com"){
-    config.BASE_API_URLS ="https://api-admin.hexaviewtech.com/"
-  }
+  // if(window.location.host === "qa-admin.hexaview.in"){
+  //   config.BASE_API_URLS ="https://api.qa-admin.hexaview.in/"
+  // }else if(window.location.host === "stage-admin.hexaview.in"){
+  //   config.BASE_API_URLS ="https://api.stage-admin.hexaview.in/"
+  // }else if(window.location.host === "admin.hexaviewtech.com"){
+  //   config.BASE_API_URLS ="https://api-admin.hexaviewtech.com/"
+  // }
   export default config;

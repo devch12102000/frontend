@@ -1,13 +1,13 @@
-import React, { useLayoutEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useLayoutEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { HeaderDropdown } from './header/index'
-import { appActions, appState } from "../../store";
+import { appActions } from "../../store";
 import { BsEnvelopeOpen, BsBell } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi"
-import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineMenu } from "react-icons/ai"
 import logo from '../../assets/brand/logoWhite.svg'
 
-const Header = (props:any) => {
+const Header = () => {
   const [size, setSize] = useState(0);
   const navigate = useNavigate();
 

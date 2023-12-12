@@ -5,7 +5,6 @@ import HeaderDropdown from './header/HeaderDropdown'
 import Sidebar from './Sidebar'
 
 export {
-  // Breadcrumb,
   Content,
   Footer,
   Header,

@@ -1,10 +1,7 @@
 import axios from "axios";
 import config from "./config";
-type Props ={
-headers ?:any,
-  anonymous?:any
-}
-const http = (headers?:any,anonymous?:any) => {
+
+const http = (headers?:any) => {
 
     const defaultHeaders = {};
   

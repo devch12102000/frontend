@@ -380,6 +380,11 @@ footer {
     position: absolute;
     right: 5%;
   }
+  .action{
+    .popover-menu{
+        display: flex;
+    }
+  }
 }
 .load-more-button{
     text-align: center;

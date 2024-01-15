@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useLocation,useNavigate, useParams } from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import { appActions } from "../../../store";
-import { Button, Form, Input,message } from 'antd';
+import { Button, Form, Input } from 'antd';
 // import "./style.scss";
 import { cloneDeep } from 'lodash';
 
@@ -11,7 +11,6 @@ const CreateAwards = () => {
     const navigate = useNavigate();
     let {id} = useParams();
     const url = window.location.pathname;
-    const location:any = useLocation();
     const [form] = Form.useForm();
     let editRecord:any = {};
     const getContactByID = appActions((action: any) => action.ContactsModel.getContactByID);
@@ -19,8 +18,6 @@ const CreateAwards = () => {
     const updateContact = appActions((action: any) => action.ContactsModel.updateContact);
     // const saveAward = appActions((actions: any) => actions.AwardModel.saveAward);
     // const updateAward = appActions((actions: any) => actions.AwardModel.updateAward);
-
-    const [logo,setLogo]=useState(editRecord && editRecord['logo'] ? editRecord['logo'] : '');
 
     const onFinish = (values: any) => {
         let formObj = cloneDeep(values);
@@ -116,6 +113,9 @@ const CreateAwards = () => {
                                      </Button>
                                      
                                 </Form.Item>
+                                <Button  type="primary" htmlType="submit"  >
+                                    Proceed to payment
+                                </Button>
                             </Grid>
                         </Grid>
                     </Form>

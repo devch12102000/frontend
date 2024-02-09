@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
-import { Button, Modal, Table } from "antd";
+import { Button, Modal, Table, TablePaginationConfig, TableProps } from "antd";
 import { appActions } from "../../../store";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
@@ -19,10 +19,11 @@ const Awards = () => {
     (actions: any) => actions.ContactsModel.deleteContact
   );
   const [dataSource, setDataSource] = useState<any>({});
-  const [_pageNo, setPageNo] = useState(1);
+  const [pageSize, _setPageSize] = useState(2);
+  const [pageNo, setPageNo] = useState(1);
+  let getAllContactsParams = { pageNo, pageSize }
 
   useEffect(() => {
-    const getAllContactsParams = { 'offset': 0, 'pageSize': 10 }
 
     getAllContacts(getAllContactsParams).then((res: any) => {
       setDataSource(res);
@@ -33,26 +34,17 @@ const Awards = () => {
     // }, 1000);
   }, []);
 
-  const handlePaginationChange = (
+  const handlePaginationChange: TableProps<any>['onChange'] = (
     pagination: any,
   ) => {
-    // setStage(pagination.current)
-    // if (searchFeature) {
-    //   let param = {
-    //     page: pagination.current,
-    //     pageSize: pagination.pageSize,
-    //     title: form.getFieldValue("search_news_title"),
-    //     status: form.getFieldValue("search_news_status"),
-    //   };
-    //   // searchAwards(param)
-    //   setPageNo(pagination.current);
-    // } else {
-      // let param = {
-      //   page: pagination.current,
-      //   pageSize: pagination.pageSize,
-      // };
-      // fetchAwards(param);
-      setPageNo(pagination.current);
+      const current = (pagination as TablePaginationConfig).current || pageNo;
+      setPageNo(current);
+      getAllContactsParams = { "pageNo": current, pageSize }
+
+      getAllContacts(getAllContactsParams).then((res: any) => {
+        setDataSource(res);
+        // setLoadChanges(false);
+      });
     // }
   };
 
@@ -258,6 +250,7 @@ const Awards = () => {
               pagination={{
                 position: ["bottomCenter"],
                 defaultCurrent: 1,
+                pageSize: pageSize,
                 total: dataSource?.total,
                 showTotal: (total) => `Total : ${total}`,
               }}

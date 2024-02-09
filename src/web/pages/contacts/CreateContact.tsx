@@ -111,9 +111,12 @@ const CreateAwards = () => {
                                          <Button className='submit-btn' type="primary" htmlType="submit"  >
                                          {url.includes("edit") ? "Update" : "Create" }
                                      </Button>
-                                     
+                                     <span>  </span>
+                                    <Button className='submit-btn' type="primary" onClick={() => navigate('/contacts')}  >
+                                            Cancel
+                                        </Button>
                                 </Form.Item>
-                                <Button  type="primary" htmlType="submit"  >
+                                <Button  type="primary"  >
                                     Proceed to payment
                                 </Button>
                             </Grid>

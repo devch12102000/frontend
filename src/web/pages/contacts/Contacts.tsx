@@ -15,17 +15,22 @@ const Awards = () => {
   const getAllContacts = appActions(
     (actions: any) => actions.ContactsModel.getAllContacts
   );
+  const deleteContact = appActions(
+    (actions: any) => actions.ContactsModel.deleteContact
+  );
   const [dataSource, setDataSource] = useState<any>({});
   const [_pageNo, setPageNo] = useState(1);
 
   useEffect(() => {
-    getAllContacts().then((res: any) => {
-        console.log("res", res)
+    const getAllContactsParams = { 'offset': 0, 'pageSize': 10 }
+
+    getAllContacts(getAllContactsParams).then((res: any) => {
       setDataSource(res);
-    });
-    setTimeout(() => {
       setLoadChanges(false);
-    }, 1000);
+    });
+    // setTimeout(() => {
+    //   setLoadChanges(false);
+    // }, 1000);
   }, []);
 
   const handlePaginationChange = (
@@ -57,7 +62,11 @@ const Awards = () => {
       title: "Confirm",
       content: "Are you sure want to delete",
       onOk: () => { 
-        // deleteAwards(id)
+        deleteContact(id).then(() => {
+          getAllContacts().then((res: any) => {
+          setDataSource(res);
+          setLoadChanges(false);
+        });        })
         console.log(id)
       },
       okText: "confirm",

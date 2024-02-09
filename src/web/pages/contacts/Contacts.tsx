@@ -6,7 +6,7 @@ import { appActions } from "../../../store";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Loader from "../../widgets/loader/Loader";
-import moment from "moment";
+// import moment from "moment";
 // import "./style.scss";
 
 const Awards = () => {
@@ -21,31 +21,25 @@ const Awards = () => {
   const [dataSource, setDataSource] = useState<any>({});
   const [pageSize, _setPageSize] = useState(2);
   const [pageNo, setPageNo] = useState(1);
-  let getAllContactsParams = { pageNo, pageSize }
+  let getAllContactsParams = { pageNo, pageSize };
 
   useEffect(() => {
-
     getAllContacts(getAllContactsParams).then((res: any) => {
       setDataSource(res);
       setLoadChanges(false);
     });
-    // setTimeout(() => {
-    //   setLoadChanges(false);
-    // }, 1000);
   }, []);
 
-  const handlePaginationChange: TableProps<any>['onChange'] = (
-    pagination: any,
+  const handlePaginationChange: TableProps<any>["onChange"] = (
+    pagination: any
   ) => {
-      const current = (pagination as TablePaginationConfig).current || pageNo;
-      setPageNo(current);
-      getAllContactsParams = { "pageNo": current, pageSize }
+    const current = (pagination as TablePaginationConfig).current || pageNo;
+    setPageNo(current);
+    getAllContactsParams = { pageNo: current, pageSize };
 
-      getAllContacts(getAllContactsParams).then((res: any) => {
-        setDataSource(res);
-        // setLoadChanges(false);
-      });
-    // }
+    getAllContacts(getAllContactsParams).then((res: any) => {
+      setDataSource(res);
+    });
   };
 
   const handleDelete = (id: string) => {
@@ -53,29 +47,20 @@ const Awards = () => {
     Modal.confirm({
       title: "Confirm",
       content: "Are you sure want to delete",
-      onOk: () => { 
+      onOk: () => {
         deleteContact(id).then(() => {
           getAllContacts().then((res: any) => {
-          setDataSource(res);
-          setLoadChanges(false);
-        });        })
-        console.log(id)
+            setDataSource(res);
+            setLoadChanges(false);
+          });
+        });
+        console.log(id);
       },
       okText: "confirm",
       cancelText: "cancel",
     });
     setLoadChanges(false);
   };
-
-
-  // const dataSource = [
-  //     {
-  //         key: '1',
-  //         logo: 'bikes24',
-  //         status: "Publish",
-  //         dataPublished: '2022-06-12'
-  //     }
-  // ];
 
   const columns = [
     {
@@ -94,53 +79,22 @@ const Awards = () => {
       key: "phone",
     },
     // {
-    //     title: 'Award Logo',
-    //     dataIndex: 'logo_cdn',
-    //     key: 'logo_cdn',
-    //     render: (name: any, record: any) => {
-    //         return (
-    //             <div className='action'>
-    //                 <img className='imageTable' src={record.logo_cdn} />
-    //             </div>
-    //         )
-    //     },
+    //   title: "Data Published",
+    //   dataIndex: "updatedAt",
+    //   key: "updatedAt",
+    //   render: (record: any) => {
+    //     return (
+    //       <div>{moment(record.createdAt).format("YYYY-MM-DD HH:mm:ss")}</div>
+    //     );
+    //   },
     // },
-    // {
-    //     title: 'Status',
-    //     dataIndex: 'status',
-    //     key: 'status',
-    //     render: (name: any, record: any) => {
-    //         return (
-    //             <div className='action'>
-    //                 <Select className='statusTable' value={record.status} options={} onChange={updateStatus} onSelect={()=>{updaterecord(record)}} >
-    //                     <Option value={Statuses?.Publish}>Publish</Option>
-    //                     <Option value={Statuses?.Pending}>Pending</Option>
-    //                     <Option value={Statuses?.Draft}>Draft</Option>
-    //                 </Select>
-    //             </div>
-    //         )
-    //     }
-    // },
-    {
-      title: "Data Published",
-      dataIndex: "updatedAt",
-      key: "updatedAt",
-      render: (record: any) => {
-        return (
-          <div>{moment(record.updatedAt).format("YYYY-MM-DD HH:mm:ss")}</div>
-        );
-      },
-    },
     {
       title: "Action",
       key: "action",
       render: (record: any) => {
         return (
           <div className="action">
-            
-            <div
-              className={`popover-menu`}
-            >
+            <div className={`popover-menu`}>
               <div className="popover-item">
                 <Link
                   to={`/edit/contact/${record["_id"]}`}
@@ -183,61 +137,15 @@ const Awards = () => {
           </div>
         </Grid>
       </Grid>
-      {/* <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <div className="form-elements-wrapper">
-          <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 24 }}
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-            form={form}
-          >
-            <Grid
-              container
-              xs={12}
-              sm={12}
-              md={12}
-              lg={12}
-              xl={12}
-              className="customRow"
-              style={{ marginTop: "4px" }}
-            >
-              <Grid item xs={12} sm={12} md={9.8} lg={9.8} xl={9.8}>
-                <Form.Item
-                  name="title"
-                  rules={[
-                    {
-                      required: false,
-                      message: "Please input your full name!",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Title" onChange={handleSearchTitle} />
-                </Form.Item>
-              </Grid>
-
-              <Grid item xs={12} sm={12} md={1.2} lg={1.2} xl={1.2}>
-                <Form.Item>
-                  <Button type="primary" onClick={handleSubmit}>
-                    SEARCH
-                  </Button>
-                </Form.Item>
-              </Grid>
-              <Grid item xs={12} sm={12} md={1} lg={1} xl={1}>
-                <Form.Item>
-                  <Button type="primary" onClick={handleClear}>
-                    CLEAR
-                  </Button>
-                </Form.Item>
-              </Grid>
-            </Grid>
-          </Form>
-        </div>
-      </Grid> */}
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12} style={{marginTop: "4px"}}>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        xl={12}
+        style={{ marginTop: "4px" }}
+      >
         <div className="table-elements-wrapper">
           {loadChanges ? (
             <Loader />
